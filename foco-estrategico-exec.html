@@ -1,0 +1,661 @@
+<\!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LemonFlow — Foco Estratégico · Resumen Ejecutivo · Abril 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --purple:      #6C3CE1;
+      --purple-mid:  #8B5CF6;
+      --purple-light:#A78BFA;
+      --purple-bg:   #F5F3FF;
+      --purple-dark: #3B0764;
+      --blue:        #2563EB;
+      --blue-bg:     #EFF6FF;
+      --amber:       #D97706;
+      --amber-bg:    #FFFBEB;
+      --green:       #059669;
+      --green-bg:    #ECFDF5;
+      --red:         #DC2626;
+      --red-bg:      #FEF2F2;
+      --gray-900:    #111827;
+      --gray-700:    #374151;
+      --gray-500:    #6B7280;
+      --gray-400:    #9CA3AF;
+      --gray-300:    #D1D5DB;
+      --gray-200:    #E5E7EB;
+      --gray-100:    #F3F4F6;
+      --gray-50:     #F9FAFB;
+      --white:       #FFFFFF;
+      --path-a:      #7C3AED;
+      --path-b:      #1D4ED8;
+      --path-c:      #B45309;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #F8F7FF; color: var(--gray-900); line-height: 1.6; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 200; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-200); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 28px; height: 48px; display: flex; align-items: center; gap: 4px; }
+    .nav-logo { font-weight: 900; font-size: 13px; color: var(--purple); letter-spacing: -.02em; margin-right: 16px; white-space: nowrap; flex-shrink: 0; }
+    .nav-logo span { color: var(--gray-400); font-weight: 400; }
+    .nav-link { font-size: 12px; font-weight: 500; color: var(--gray-500); text-decoration: none; padding: 4px 10px; border-radius: 6px; white-space: nowrap; transition: all .15s; }
+    .nav-link:hover { background: var(--purple-bg); color: var(--purple); }
+
+    /* SECTIONS */
+    section { padding: 56px 28px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* HERO */
+    .hero { background: linear-gradient(140deg, #1E1048 0%, #3B0764 40%, #1E3A8A 100%); color: white; padding: 56px 28px 64px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); padding: 4px 12px; border-radius: 100px; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 18px; }
+    .hero h1 { font-size: clamp(24px, 3.5vw, 44px); font-weight: 900; line-height: 1.08; letter-spacing: -.03em; margin-bottom: 12px; }
+    .hero h1 em { font-style: normal; background: linear-gradient(90deg, #A78BFA, #60A5FA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 15px; opacity: .65; max-width: 520px; margin-bottom: 40px; }
+    .hero-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+    @media(max-width:800px) { .hero-stats { grid-template-columns: repeat(2,1fr); } }
+    .hstat { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 16px 18px; position: relative; overflow: hidden; }
+    .hstat::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent, rgba(255,255,255,.3)); }
+    .hstat .num { font-size: 28px; font-weight: 900; letter-spacing: -.04em; line-height: 1; margin-bottom: 4px; }
+    .hstat .lbl { font-size: 11.5px; opacity: .65; font-weight: 500; }
+
+    /* SECTION HEADER */
+    .sec-tag { font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
+    .sec-title { font-size: clamp(20px, 2.2vw, 28px); font-weight: 900; letter-spacing: -.025em; color: var(--gray-900); margin-bottom: 8px; }
+    .sec-sub { font-size: 14px; color: var(--gray-500); max-width: 560px; margin-bottom: 32px; }
+
+    /* EVIDENCE */
+    #evidencia { background: white; }
+    .ev3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    @media(max-width:800px) { .ev3 { grid-template-columns: 1fr; } }
+    .ev-mini { border: 1.5px solid var(--gray-200); border-radius: 14px; padding: 20px; }
+    .ev-mini .ev-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; margin-bottom: 12px; }
+    .ev-mini h3 { font-size: 13.5px; font-weight: 700; margin-bottom: 6px; }
+    .ev-mini p { font-size: 12.5px; color: var(--gray-500); line-height: 1.5; }
+    .ev-chips { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+    .ev-chip { font-size: 11.5px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 7px; padding: 6px 10px; color: var(--gray-700); line-height: 1.4; }
+
+    /* DIAGNOSIS */
+    #diagnostico { background: var(--gray-50); }
+    .diag4 { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    @media(max-width:800px) { .diag4 { grid-template-columns: 1fr; } }
+    .dcard { background: white; border: 1px solid var(--gray-200); border-radius: 12px; padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; }
+    .dcard .dico { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+    .dcard h3 { font-size: 13.5px; font-weight: 700; margin-bottom: 4px; }
+    .dcard p { font-size: 12.5px; color: var(--gray-500); line-height: 1.5; }
+    .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 2px 8px; border-radius: 5px; margin-bottom: 8px; }
+    .tag-red    { background: var(--red-bg);    color: var(--red);    }
+    .tag-amber  { background: var(--amber-bg);  color: var(--amber);  }
+    .tag-purple { background: var(--purple-bg); color: var(--purple); }
+    .tag-green  { background: var(--green-bg);  color: var(--green);  }
+    .tag-blue   { background: var(--blue-bg);   color: var(--blue);   }
+    .tag-gray   { background: var(--gray-100);  color: var(--gray-700); }
+
+    /* CAPACITY */
+    #capacidad { background: white; }
+    .cap2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media(max-width:700px) { .cap2 { grid-template-columns: 1fr; } }
+    .cap-team { border-radius: 12px; padding: 16px 18px; border: 1.5px solid; }
+    .cap-strong { border-color: var(--green); background: var(--green-bg); color: #065F46; }
+    .cap-weak   { border-color: var(--amber); background: var(--amber-bg); color: #92400E; }
+    .cap-team h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .cap-team ul { list-style: none; padding: 0; }
+    .cap-team ul li { font-size: 12px; margin-bottom: 3px; }
+    .cap-team ul li::before { content: '→ '; opacity: .5; }
+
+    /* INITIATIVES */
+    #iniciativas { background: var(--gray-50); }
+    .init-phases { display: flex; flex-direction: column; gap: 20px; }
+    .init-phase-label { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .phase-badge { font-size: 10.5px; font-weight: 800; letter-spacing: .07em; padding: 4px 12px; border-radius: 100px; text-transform: uppercase; }
+    .phase-note { font-size: 12.5px; color: var(--gray-500); }
+    .init-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .init-item { background: white; border: 1.5px solid var(--gray-200); border-radius: 10px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; }
+    .init-name { font-size: 12.5px; font-weight: 600; color: var(--gray-700); }
+    .init-time { font-size: 11.5px; font-weight: 800; color: var(--purple); white-space: nowrap; }
+    .init-time.warn { color: var(--amber); }
+    .init-time.tbd { color: var(--green); opacity: .7; }
+
+    /* PATHS */
+    #caminos { background: white; }
+    .paths3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-bottom: 20px; }
+    @media(max-width:900px) { .paths3 { grid-template-columns: 1fr; } }
+    .pcard { border-radius: 18px; border: 2px solid; padding: 24px; position: relative; overflow: hidden; }
+    .pcard::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+    .pcard.pa { border-color: #DDD6FE; background: #FAFAFE; }
+    .pcard.pa::before { background: var(--path-a); }
+    .pcard.pb { border-color: #BFDBFE; background: #F0F7FF; }
+    .pcard.pb::before { background: var(--path-b); }
+    .pcard.pc { border-color: #FDE68A; background: #FFFEF0; }
+    .pcard.pc::before { background: var(--path-c); }
+    .path-letter { width: 32px; height: 32px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 900; color: white; margin-bottom: 12px; }
+    .pa .path-letter { background: var(--path-a); }
+    .pb .path-letter { background: var(--path-b); }
+    .pc .path-letter { background: var(--path-c); }
+    .pcard h3 { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+    .pcard .pdesc { font-size: 12.5px; color: var(--gray-500); margin-bottom: 14px; line-height: 1.5; }
+    .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+    .pros, .cons { border-radius: 8px; padding: 10px 12px; }
+    .pros { background: var(--green-bg); }
+    .cons { background: var(--red-bg); }
+    .pros h4 { font-size: 10px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+    .cons h4 { font-size: 10px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+    .pros ul, .cons ul { list-style: none; padding: 0; }
+    .pros ul li, .cons ul li { font-size: 11.5px; margin-bottom: 4px; line-height: 1.35; }
+    .pros ul li::before { content: '✓ '; font-weight: 700; color: var(--green); }
+    .cons ul li::before { content: '✗ '; font-weight: 700; color: var(--red); }
+
+    /* Capabilities per path */
+    .path-caps { margin-top: 12px; }
+    .path-caps-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 7px; }
+    .pa .path-caps-label { color: var(--path-a); }
+    .pb .path-caps-label { color: var(--path-b); }
+    .pc .path-caps-label { color: var(--path-c); }
+    .caps-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+    .cap-chip { font-size: 11px; padding: 3px 9px; border-radius: 6px; font-weight: 500; }
+    .pa .cap-chip { background: rgba(124,58,237,.1); color: #4C1D95; }
+    .pb .cap-chip { background: rgba(29,78,216,.1); color: #1E3A8A; }
+    .pc .cap-chip { background: rgba(180,83,9,.1); color: #78350F; }
+
+    /* Partner callout */
+    .partner-callout { background: linear-gradient(135deg, #1E1048, #3B0764); color: white; border-radius: 14px; padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start; margin-top: 16px; }
+    .partner-callout .pc-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .partner-callout h4 { font-size: 13px; font-weight: 800; margin-bottom: 4px; }
+    .partner-callout p { font-size: 12.5px; opacity: .75; line-height: 1.5; }
+
+    /* Trade-off row */
+    .tradeoff-wrap { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 14px; overflow: hidden; margin-top: 20px; }
+    .tradeoff-head { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; background: var(--gray-900); color: white; padding: 12px 20px; gap: 8px; }
+    .tradeoff-head span { font-size: 12px; font-weight: 700; }
+    .tradeoff-head .pa-c { color: #C4B5FD; }
+    .tradeoff-head .pb-c { color: #93C5FD; }
+    .tradeoff-head .pc-c { color: #FCD34D; }
+    .tradeoff-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; padding: 11px 20px; gap: 8px; border-top: 1px solid var(--gray-200); background: white; align-items: center; }
+    .tradeoff-row:nth-child(even) { background: var(--gray-50); }
+    .tradeoff-row .label { font-size: 12.5px; font-weight: 600; color: var(--gray-700); }
+
+    /* NEXT STEP */
+    #siguiente { background: var(--gray-50); }
+    .decision-box { background: linear-gradient(135deg, var(--purple-dark), #1E3A8A); color: white; border-radius: 18px; padding: 32px 36px; }
+    .decision-box h2 { font-size: 20px; font-weight: 800; margin-bottom: 8px; letter-spacing: -.02em; }
+    .decision-box p { font-size: 14px; opacity: .7; margin-bottom: 24px; }
+    .axes { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+    @media(max-width:700px) { .axes { grid-template-columns: repeat(2,1fr); } }
+    .axis { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); border-radius: 10px; padding: 14px 16px; }
+    .axis h4 { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+    .axis p { font-size: 11.5px; opacity: .6; line-height: 1.45; }
+
+    /* utils */
+    .divider { height: 1px; background: var(--gray-200); margin: 20px 0; }
+  </style>
+</head>
+<body>
+
+<\!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">LemonFlow <span>· Foco Estratégico</span></div>
+    <a class="nav-link" href="#evidencia">Evidencia</a>
+    <a class="nav-link" href="#diagnostico">Diagnóstico</a>
+    <a class="nav-link" href="#capacidad">Equipo</a>
+    <a class="nav-link" href="#iniciativas">Iniciativas</a>
+    <a class="nav-link" href="#caminos">Los 3 focos</a>
+    <a class="nav-link" href="#siguiente">Decisión</a>
+  </div>
+</nav>
+
+<\!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">🧭 Resumen ejecutivo · Abril 2026</div>
+    <h1>Foco estratégico<br>de <em>LemonFlow</em></h1>
+    <p class="hero-sub">Evidencia cualitativa y cuantitativa consolidada. La pregunta ya no es qué hacer — es cuál tensión elegir resolver primero.</p>
+    <div class="hero-stats">
+      <div class="hstat" style="--accent:#A78BFA">
+        <div class="num">119</div>
+        <div class="lbl">Reuniones comerciales analizadas</div>
+      </div>
+      <div class="hstat" style="--accent:#60A5FA">
+        <div class="num">−37%</div>
+        <div class="lbl">Issues de producto resueltos desde Jul 2025</div>
+      </div>
+      <div class="hstat" style="--accent:#34D399">
+        <div class="num">$408k</div>
+        <div class="lbl">ARR activo en pipeline (68 cuentas)</div>
+      </div>
+      <div class="hstat" style="--accent:#FBBF24">
+        <div class="num">3</div>
+        <div class="lbl">Caminos estratégicos identificados</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<\!-- 01 — EVIDENCIA -->
+<section id="evidencia">
+  <div class="container">
+    <div class="sec-tag">01 — Base de evidencia</div>
+    <h2 class="sec-title">Lo que sabemos, con datos</h2>
+    <p class="sec-sub">Tres fuentes construyeron el diagnóstico. Estamos en punto pre-decisional, no de exploración.</p>
+
+    <div class="ev3">
+
+      <div class="ev-mini" style="border-top: 3px solid var(--purple);">
+        <div class="ev-icon" style="background:var(--purple-bg);">📋</div>
+        <h3>119 reuniones comerciales</h3>
+        <p>Discovery, demos y POCs con prospectos de Chile, México y Colombia. 68 cuentas con MRR capturado.</p>
+        <div class="ev-chips">
+          <div class="ev-chip">💡 El cliente compra <strong>"control con evidencia"</strong>, no cumplimiento de norma X</div>
+          <div class="ev-chip">💡 IA para normativas: criterio de selección en 49/68 cuentas — documentado en Improsa</div>
+          <div class="ev-chip">💡 Ticketing/solicitudes: palanca de adopción diaria y puente a ELM</div>
+        </div>
+      </div>
+
+      <div class="ev-mini" style="border-top: 3px solid var(--blue);">
+        <div class="ev-icon" style="background:var(--blue-bg);">🔍</div>
+        <h3>Evaluación heurística del producto</h3>
+        <p>100 issues evaluados en Jul 2025, re-evaluados en Abr 2026.</p>
+        <div class="ev-chips">
+          <div class="ev-chip">✅ <strong>−37 issues</strong> resueltos (100 → 63). Muy críticos: 29 → 13</div>
+          <div class="ev-chip">⚠️ Pendientes críticos: escalabilidad de títulos, navegación, consolidado de riesgos, home normativo</div>
+        </div>
+      </div>
+
+      <div class="ev-mini" style="border-top: 3px solid var(--green);">
+        <div class="ev-icon" style="background:var(--green-bg);">🗺</div>
+        <h3>Benchmark GRC / LegalOps / CLM</h3>
+        <p>Análisis del estado del arte en tres mercados y sus principales competidores.</p>
+        <div class="ev-chips">
+          <div class="ev-chip">✅ Diferencial real: ticketing legal + compliance liviano sin overhead enterprise</div>
+          <div class="ev-chip">✅ Time-to-proof en 2–6 semanas — donde suites enterprise pierden</div>
+          <div class="ev-chip">🚫 No copiar: spend/e-billing ELM, CLM enterprise con redlining, AI chatbot sin output estructurado</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<\!-- 02 — DIAGNÓSTICO -->
+<section id="diagnostico">
+  <div class="container">
+    <div class="sec-tag">02 — Diagnóstico consolidado</div>
+    <h2 class="sec-title">Dónde estamos parados</h2>
+    <p class="sec-sub">Cuatro patrones estructurales que emergen de forma consistente en múltiples fuentes.</p>
+
+    <div class="diag4">
+
+      <div class="dcard">
+        <div class="dico" style="background:var(--red-bg);">📉</div>
+        <div>
+          <div class="tag tag-red">Crítico · Comercial</div>
+          <h3>Conversión baja: el champion no puede justificar la compra</h3>
+          <p>Tasa Pitch → Cierre del 5%. La causa no son los features — el champion no obtiene artefactos defendibles para llevar a finanzas o dirección.</p>
+        </div>
+      </div>
+
+      <div class="dcard">
+        <div class="dico" style="background:var(--amber-bg);">🧩</div>
+        <div>
+          <div class="tag tag-amber">Crítico · Producto</div>
+          <h3>El producto no puede demostrar "control con evidencia"</h3>
+          <p>Lo que el cliente compra es trazabilidad + responsables + estados. Faltan las piezas que hacen la promesa defendible: entidad control ligada a evidencia, registro consentimiento, EIPD desde RAT.</p>
+        </div>
+      </div>
+
+      <div class="dcard">
+        <div class="dico" style="background:var(--amber-bg);">🎯</div>
+        <div>
+          <div class="tag tag-amber">Crítico · GTM</div>
+          <h3>Sin ICP definido ni playbook diferenciado</h3>
+          <p>El equipo comercial atiende con el mismo pitch a prospectos con patrones de compra radicalmente distintos. El 40% del pipeline no tiene fit estratégico real.</p>
+        </div>
+      </div>
+
+      <div class="dcard">
+        <div class="dico" style="background:var(--purple-bg);">🏁</div>
+        <div>
+          <div class="tag tag-purple">Señal · Mercado</div>
+          <h3>El diferencial está en la ejecución, no en la idea</h3>
+          <p>ServiceNow y MetricStream ya operan bajo el mismo mantra. LF gana con un modelo más liviano, más rápido y más fácil de justificar — no con una idea distinta.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<\!-- 03 — CAPACIDAD -->
+<section id="capacidad">
+  <div class="container">
+    <div class="sec-tag">03 — Variable de ejecución</div>
+    <h2 class="sec-title">La capacidad técnica no es homogénea</h2>
+    <p class="sec-sub">La decisión estratégica no depende solo de la demanda. El equipo disponible cambia el análisis.</p>
+
+    <div class="cap2">
+      <div class="cap-team cap-strong">
+        <h4><span>💪</span> Frente CLM</h4>
+        <ul>
+          <li>Equipo externo especializado, perfiles senior</li>
+          <li>Entrega estimada ~1 mes</li>
+          <li>Mayor capacidad de ejecución estructural</li>
+        </ul>
+      </div>
+      <div class="cap-team cap-weak">
+        <h4><span>⚠️</span> Frente Compliance / Ticketing</h4>
+        <ul>
+          <li>Menor seniority técnico disponible</li>
+          <li>Riesgo de solución parcheada bajo presión</li>
+          <li>Dependencia de especificación clara y detallada</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background: #FFFBEB; border: 1.5px solid #FDE68A; border-radius: 12px; padding: 16px 20px; margin-top: 14px; display:flex; gap:12px; align-items:flex-start;">
+      <span style="font-size:18px; flex-shrink:0;">🔑</span>
+      <p style="font-size:13px; color:#B45309;"><strong>Implicancia para la decisión:</strong> El Camino B (Ticketing + CLM) puede aprovechar la capacidad fuerte disponible hoy. El Camino A (Ley de Datos) recae sobre el equipo con menor seniority — lo que eleva el riesgo de entrega en la parte más sensible.</p>
+    </div>
+  </div>
+</section>
+
+<\!-- 04 — INICIATIVAS -->
+<section id="iniciativas">
+  <div class="container">
+    <div class="sec-tag">04 — Inventario de iniciativas</div>
+    <h2 class="sec-title">Las iniciativas y sus tiempos</h2>
+    <p class="sec-sub">Tres fases. La decisión estratégica determina cuál se prioriza.</p>
+
+    <div class="init-phases">
+
+      <div>
+        <div class="init-phase-label">
+          <span class="phase-badge" style="background:#6C3CE1; color:white;">P0 — Cerrar el loop operativo</span>
+          <span class="phase-note">Casos de uso que cierran ventas · ~8 sem en paralelo</span>
+        </div>
+        <div class="init-row">
+          <div class="init-item"><span class="init-name">UX Esencial</span><span class="init-time">3 sem</span></div>
+          <div class="init-item"><span class="init-name">Personalización y onboarding</span><span class="init-time">5 sem</span></div>
+          <div class="init-item"><span class="init-name">Controles como objeto</span><span class="init-time">4 sem</span></div>
+          <div class="init-item"><span class="init-name">Ley de Datos</span><span class="init-time warn">4–8 sem · ⚠ Deadline dic 2026</span></div>
+          <div class="init-item"><span class="init-name">Ticketing</span><span class="init-time">8 sem</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="init-phase-label">
+          <span class="phase-badge" style="background:#0EA5E9; color:white;">P1 — Time to market</span>
+          <span class="phase-note">LPDP · oportunidad 2026–27 · ~4 sem en paralelo</span>
+        </div>
+        <div class="init-row">
+          <div class="init-item"><span class="init-name">Empaquetado de evidencia</span><span class="init-time" style="color:#0369A1">4 sem</span></div>
+          <div class="init-item"><span class="init-name">Dashboard compliance</span><span class="init-time" style="color:#0369A1">3 sem</span></div>
+          <div class="init-item"><span class="init-name">Reportería preconfigurada</span><span class="init-time" style="color:#0369A1">2 sem</span></div>
+          <div class="init-item"><span class="init-name">Trazabilidad auditable</span><span class="init-time" style="color:#0369A1">3 sem</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="init-phase-label">
+          <span class="phase-badge" style="background:#059669; color:white;">P2 — El futuro producto</span>
+          <span class="phase-note">IA que amplifica el core hacia ELM · Tiempos por definir</span>
+        </div>
+        <div class="init-row">
+          <div class="init-item"><span class="init-name">Asistencia IA compliance</span><span class="init-time tbd">TBD</span></div>
+          <div class="init-item"><span class="init-name">Conexión CLM + Ticketing</span><span class="init-time" style="color:var(--green)">~1 mes (externo)</span></div>
+          <div class="init-item"><span class="init-name">Monitoreo normativo proactivo</span><span class="init-time tbd">TBD</span></div>
+          <div class="init-item"><span class="init-name">IA que produce estructura</span><span class="init-time tbd">TBD</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<\!-- 05 — LOS 3 FOCOS -->
+<section id="caminos">
+  <div class="container">
+    <div class="sec-tag">05 — Los 3 focos</div>
+    <h2 class="sec-title">La tensión que hay que resolver</h2>
+    <p class="sec-sub">Camino A genera más volumen de deals. Camino B genera ARR activo comparable con 33% menos deals y equipo más senior. Elegir un foco no es descartar lo otro — es decidir qué tensión resolver primero.</p>
+
+    <div class="paths3">
+
+      <\!-- CAMINO A -->
+      <div class="pcard pa">
+        <div class="path-letter">A</div>
+        <div class="tag tag-purple">Revenue-driven</div>
+        <h3>Ley de Datos</h3>
+        <p class="pdesc">Foco en cumplimiento normativo y casos Ley 21.719. Toda interacción parte del problema regulatorio con deadline dic 2026.</p>
+
+        <div style="background:rgba(124,58,237,.07); border-radius:9px; padding:10px 12px; margin-bottom:12px; font-size:12px; color:#4C1D95;">
+          <strong>Pipeline:</strong> 36 deals primarios · $170k ARR activo · $231k potencial
+        </div>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>A favor</h4>
+            <ul>
+              <li>Mayor volumen de pipeline (36 deals)</li>
+              <li>Deadline dic 2026 acelera ciclos</li>
+              <li>Momentum comercial en últimos 2 meses</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>En contra</h4>
+            <ul>
+              <li>Equipo menos senior ejecutando</li>
+              <li>Deuda en módulo de protección de datos</li>
+              <li>1 de cada 3 deals se pierde pese al deadline</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="path-caps">
+          <div class="path-caps-label">Capacidades asociadas</div>
+          <div class="caps-chips">
+            <span class="cap-chip">RAT / Ley de Datos</span>
+            <span class="cap-chip">IA para normativas</span>
+            <span class="cap-chip">Gestión normativa con evidencia</span>
+            <span class="cap-chip">Consentimientos / ARCO</span>
+            <span class="cap-chip">EIPD / PIA</span>
+          </div>
+        </div>
+      </div>
+
+      <\!-- CAMINO B -->
+      <div class="pcard pb">
+        <div class="path-letter">B</div>
+        <div class="tag tag-blue">Producto estructural</div>
+        <h3>Ticketing + CLM integrado</h3>
+        <p class="pdesc">Flujo donde toda interacción parte como ticket y puede evolucionar hacia gestión contractual. Equipo senior disponible hoy.</p>
+
+        <div style="background:rgba(29,78,216,.07); border-radius:9px; padding:10px 12px; margin-bottom:12px; font-size:12px; color:#1E3A8A;">
+          <strong>Pipeline:</strong> 24 deals primarios · $163k ARR activo · $214k potencial
+        </div>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>A favor</h4>
+            <ul>
+              <li>Equipo senior → menor riesgo operacional</li>
+              <li>Ticket promedio activo más alto ($9,598)</li>
+              <li>Ticketing + CLM = deal más completo</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>En contra</h4>
+            <ul>
+              <li>Menor volumen de oportunidades entrantes</li>
+              <li>Gaps conocidos: cronómetro, días hábiles, reportería, SLAs</li>
+              <li>ICP requiere calificación más precisa</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="path-caps">
+          <div class="path-caps-label">Capacidades asociadas</div>
+          <div class="caps-chips">
+            <span class="cap-chip">Ticketing / solicitudes internas</span>
+            <span class="cap-chip">CLM / contratos</span>
+            <span class="cap-chip">Flujos configurables</span>
+            <span class="cap-chip">Reportería ejecutiva</span>
+            <span class="cap-chip">SLAs y días hábiles</span>
+          </div>
+        </div>
+      </div>
+
+      <\!-- CAMINO C -->
+      <div class="pcard pc">
+        <div class="path-letter">C</div>
+        <div class="tag tag-amber">Transición / Alineación</div>
+        <h3>Estrategia híbrida</h3>
+        <p class="pdesc">Avance en ambos frentes. Útil como herramienta de alineación interna, pero los datos muestran que A y B rara vez aparecen en el mismo cliente.</p>
+
+        <div style="background:rgba(180,83,9,.07); border-radius:9px; padding:10px 12px; margin-bottom:12px; font-size:12px; color:#78350F;">
+          <strong>Observado:</strong> solo 3 deals con A+B activos simultáneamente (de 68)
+        </div>
+
+        <div class="pros-cons">
+          <div class="pros">
+            <h4>A favor</h4>
+            <ul>
+              <li>Menor fricción interna</li>
+              <li>Útil como transición o cierre de deals avanzados</li>
+              <li>Cubre los 3 deals A+B del pipeline</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <h4>En contra</h4>
+            <ul>
+              <li>Dilución de foco en ambos frentes</li>
+              <li>Complica el pitch ("¿qué somos exactamente?")</li>
+              <li>Sin señal de mercado que justifique dos frentes en paralelo</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="path-caps">
+          <div class="path-caps-label">Capacidades necesarias (ambas)</div>
+          <div class="caps-chips">
+            <span class="cap-chip">RAT + Ley de Datos</span>
+            <span class="cap-chip">Ticketing</span>
+            <span class="cap-chip">CLM</span>
+            <span class="cap-chip">IA normativas</span>
+            <span class="cap-chip">Flujos + Reportería</span>
+          </div>
+        </div>
+      </div>
+
+    </div><\!-- /paths3 -->
+
+    <\!-- Partner callout (replaces quantitative section) -->
+    <div class="partner-callout">
+      <div class="pc-icon">🤝</div>
+      <div>
+        <h4>Factor multiplicador para el Camino A: interés de partners</h4>
+        <p>Hay interés concreto de partners y canales para amplificar la oferta de Ley de Datos si el producto tiene las capacidades correctas. Esto convierte el pipeline directo ($170k ARR activo, 36 deals) en un potencial multiplicador — cada partner puede traer 3–10 clientes finales. Actualmente no existe un programa de socios formalizado: cada canal es tratado como deal directo. Formalizar este modelo es la palanca de menor costo de adquisición del pipeline.</p>
+      </div>
+    </div>
+
+    <\!-- Trade-off table -->
+    <div class="tradeoff-wrap" style="margin-top:20px;">
+      <div class="tradeoff-head">
+        <span>Dimensión</span>
+        <span class="pa-c">A — Ley Datos</span>
+        <span class="pb-c">B — TKT + CLM</span>
+        <span class="pc-c">C — Híbrido</span>
+      </div>
+      <div class="tradeoff-row">
+        <span class="label">Volumen de pipeline</span>
+        <span><span class="tag tag-green" style="margin:0">36 deals · $170k</span></span>
+        <span><span class="tag tag-blue" style="margin:0">24 deals · $163k</span></span>
+        <span><span class="tag tag-gray" style="margin:0">3 deals A+B</span></span>
+      </div>
+      <div class="tradeoff-row">
+        <span class="label">Revenue 0–90 días</span>
+        <span><span class="tag tag-green" style="margin:0">Alta prob.</span></span>
+        <span><span class="tag tag-gray" style="margin:0">Menor prob.</span></span>
+        <span><span class="tag tag-amber" style="margin:0">Media</span></span>
+      </div>
+      <div class="tradeoff-row">
+        <span class="label">Fit con capacidad técnica</span>
+        <span><span class="tag tag-amber" style="margin:0">Equipo junior</span></span>
+        <span><span class="tag tag-green" style="margin:0">Equipo senior CLM</span></span>
+        <span><span class="tag tag-amber" style="margin:0">Mixto</span></span>
+      </div>
+      <div class="tradeoff-row">
+        <span class="label">Coherencia de producto</span>
+        <span><span class="tag tag-gray" style="margin:0">Módulo puntual</span></span>
+        <span><span class="tag tag-green" style="margin:0">Estructural</span></span>
+        <span><span class="tag tag-amber" style="margin:0">Gradual</span></span>
+      </div>
+      <div class="tradeoff-row">
+        <span class="label">Potencial multiplicador</span>
+        <span><span class="tag tag-purple" style="margin:0">Partners interesados</span></span>
+        <span><span class="tag tag-gray" style="margin:0">Directo</span></span>
+        <span><span class="tag tag-gray" style="margin:0">Parcial</span></span>
+      </div>
+      <div class="tradeoff-row">
+        <span class="label">Riesgo de ejecución</span>
+        <span><span class="tag tag-red" style="margin:0">Alto (deuda producto)</span></span>
+        <span><span class="tag tag-green" style="margin:0">Bajo–medio</span></span>
+        <span><span class="tag tag-amber" style="margin:0">Medio</span></span>
+      </div>
+      <div class="tradeoff-row">
+        <span class="label">Foco del equipo</span>
+        <span><span class="tag tag-green" style="margin:0">Un frente claro</span></span>
+        <span><span class="tag tag-green" style="margin:0">Un frente claro</span></span>
+        <span><span class="tag tag-red" style="margin:0">Riesgo dilución</span></span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<\!-- 06 — SIGUIENTE PASO -->
+<section id="siguiente">
+  <div class="container">
+    <div class="sec-tag">06 — Próximo paso</div>
+    <h2 class="sec-title">La evidencia está lista. Falta la decisión.</h2>
+    <p class="sec-sub">Análisis cualitativo y cuantitativo completos. Lo que sigue es la sesión de decisión.</p>
+
+    <div class="decision-box">
+      <h2>Las cuatro variables a balancear</h2>
+      <p>La pregunta no es "¿cuál camino suena mejor?" sino qué peso le damos a cada variable en el contexto de hoy.</p>
+      <div class="axes">
+        <div class="axis">
+          <h4>📊 Demanda real</h4>
+          <p>A concentra más volumen hoy. B genera ARR comparable con menos deals.</p>
+        </div>
+        <div class="axis">
+          <h4>🔧 Capacidad de ejecución</h4>
+          <p>El equipo senior está disponible para CLM/Ticketing. Compliance recae en equipo junior.</p>
+        </div>
+        <div class="axis">
+          <h4>⚡ Velocidad de revenue</h4>
+          <p>¿Cuánta presión existe para mostrar señal en los próximos 90 días?</p>
+        </div>
+        <div class="axis">
+          <h4>🏗 Producto a largo plazo</h4>
+          <p>¿La iniciativa construye base para ELM o queda como módulo aislado?</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:36px; padding-top:24px; border-top:1px solid var(--gray-200); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+      <div>
+        <p style="font-size:13px; font-weight:700;">LemonFlow · Foco Estratégico · Resumen Ejecutivo · Abril 2026</p>
+        <p style="font-size:11.5px; color:var(--gray-400); margin-top:2px;">119 reuniones · Evaluación heurística · Benchmark GRC/LegalOps · Análisis PMF Abril 2026</p>
+      </div>
+      <div style="font-size:11px; color:var(--gray-400); font-style:italic;">Documento de trabajo. No es una decisión — es la base para tomarla.</div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
